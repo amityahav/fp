@@ -82,5 +82,9 @@ func TestFp(t *testing.T) {
 		cb := func(acc int, curr int, index int) int {
 			return acc + curr
 		}
+
+		ns := Reduce(cb, 0, s)
+		require.Equal(t, 10, ns)
+
 	})
 }

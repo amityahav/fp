@@ -43,6 +43,14 @@ func Filter[T any](pred func(T, int) bool, s []T) []T {
 // Reduce executes a user-supplied "reducer" callback function on each element of the slice, in order,
 // passing in the return value from the calculation on the preceding element.
 // The final result of running the reducer across all elements of the slice is a single value.
+//
+// Example:
+// 		s := []int{1, 2, 3, 4}
+//		cb := func(acc int, curr int, index int) int {
+//			return acc + curr
+//		}
+//
+//		ns := Reduce(cb, 0, s) // output: ns = 10
 func Reduce[T any](reducer func(T, T, int) T, acc T, s []T) T {
 	for i, elem := range s {
 		acc = reducer(acc, elem, i)
